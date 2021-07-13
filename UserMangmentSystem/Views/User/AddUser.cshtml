@@ -1,0 +1,58 @@
+﻿@model UserMangmentSystem.ViewModels.UserViewModel
+@{
+    ViewData["Title"] = "Add User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Action = "Add User";
+}
+
+@if (ViewBag.Action != null)
+{
+     Action = "Update User";
+
+    <h1>@ViewBag.Action :  </h1>
+}
+else
+{
+<h1>Add User :</h1>
+}
+
+
+<form asp-controller="user" asp-action="AddUser" method="post">
+    <div class="row">
+        <input asp-for="user.Id" hidden />
+        <div class="mb-3 col-6">
+            <label asp-for="user.FirstName" class="form-label"></label>
+            <input asp-for="user.FirstName" class="form-control">
+            <span  asp-validation-for="user.FirstName" class="text-danger"></span>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col-6">
+            <label asp-for="user.LastName" class="form-label"></label>
+            <input asp-for="user.LastName" class="form-control">
+            <span asp-validation-for="user.LastName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col-6">
+
+            <select asp-for="user.IdDepartment" asp-items="@Model.TypeDropDown" class="form-control">
+                <option selected>--Select Department--</option>
+            </select>
+            <span asp-validation-for="user.IdDepartment" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="mb-3 col-6">
+            <label asp-for="user.Sal" class="form-label"></label>
+            <input asp-for="user.Sal" class="form-control">
+            <span asp-validation-for="user.Sal" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6"> <button type="submit" class="btn btn-primary btn-lg btn-block">@Action</button></div>
+    </div>
+
+</form>

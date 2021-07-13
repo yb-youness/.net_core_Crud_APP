@@ -1,0 +1,15 @@
+﻿@model UserMangmentSystem.Models.User
+@{
+    ViewData["Title"] = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Show One User Info :</h1>
+<ul>
+    <li>Name : @Model.FirstName</li>
+    <li>SurName : @Model.LastName</li>
+    <li>Sal : @Model.Sal</li>
+    <li>Department : @Model.Department.NameDepartemnt</li>
+ </ul>
+    <a asp-controller="user" asp-action="Index"> << Go Back</a>
+

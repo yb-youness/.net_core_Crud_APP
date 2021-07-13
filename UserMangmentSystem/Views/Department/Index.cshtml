@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Department>
+@{
+    ViewData["Title"] = "Department List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>List Of Depatements : </h1>
+@* Alet Comp  *@
+@if (TempData.Peek("Message") != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <span>@TempData.Peek("Message")</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+<a asp-controller="department" asp-action="Add" class="btn btn-info float-right mb-3">Add Department</a>
+
+@if (Model.Count() > 0)
+{
+<table class="table ">
+    <tr>
+        <td scope="col">ID Department</td>
+        <td scope="col">Department Name</td>
+
+    </tr>
+    @foreach (var department in Model)
+    {
+        <tr>
+            <td>@department.IdDepartment</td>
+            <td>@department.NameDepartemnt</td>
+            <td><a asp-controller="department" asp-action="Details" asp-route-Id="@department.IdDepartment" class="btn btn-info">Details</a></td>
+            <td><a asp-controller="department" asp-action="BindDep" asp-route-Id="@department.IdDepartment" class="btn btn-warning">Update</a></td>
+            <td><a asp-controller="department" asp-action="DelDepartment" asp-route-Id="@department.IdDepartment" class="btn btn-danger " onclick="return confirm('You Want To Delete Department ??')">Delete</a></td>
+        </tr>
+
+    }
+</table>
+}else
+{   <p class="text-danger"> No Department Created Yet !! </p>
+    }

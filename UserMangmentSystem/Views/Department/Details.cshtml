@@ -1,0 +1,14 @@
+﻿@model Department 
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Info Department :</h1>
+
+
+<ul>
+    <li>Name : @Model.NameDepartemnt</li>
+    
+</ul>
+<a asp-controller="department" asp-action="Index"> << Go Back</a>

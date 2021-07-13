@@ -1,0 +1,54 @@
+﻿@model IEnumerable<User>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>List Users :</h1>
+@* Alet Comp  *@
+@if (TempData.Peek("Message") != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <span>@TempData.Peek("Message")</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+<a asp-controller="user" asp-action="AddUser" class="btn btn-info float-right mb-3">Add User</a>
+
+
+
+@if (Model.Count() > 0)
+{
+    <table class="table ">
+        <tr>
+            <td scope="col">Name</td>
+            <td scope="col">SurName</td>
+            <td scope="col">Salaire</td>
+            <td scope="col">Department </td>
+            <td colspan="3">Actions</td>
+        </tr>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.Sal</td>
+                <td>@user.Department.NameDepartemnt</td>
+                <td><a asp-controller="user" asp-action="Details" asp-route-Id="@user.Id" class="btn btn-info">Details</a></td>
+                <td><a asp-controller="user" asp-action="BindUser" asp-route-Id="@user.Id" class="btn btn-warning">Update</a></td>
+                <td><a asp-controller="user" asp-action="Delete" asp-route-Id="@user.Id" class="btn btn-danger " onclick="return confirm('You Want To Delete User ??')">Delete</a></td>
+
+            </tr>
+        }
+
+
+
+
+    </table>
+}
+else
+{
+    <p class="text-danger">No User Created Yet !!!</p>
+}

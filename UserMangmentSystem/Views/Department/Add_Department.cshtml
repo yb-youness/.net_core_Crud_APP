@@ -1,0 +1,35 @@
+﻿@model Department
+@{
+    ViewData["Title"] = "Add Department";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Action = "Add Department : ";
+    if (ViewBag.Action != null)
+        Action = ViewBag.Action;
+
+}
+
+<h1>@Action :</h1>
+
+<form asp-controller="department" asp-action="Add" method="post">
+    <input asp-for="IdDepartment" hidden />
+    <div class="row">
+        <div class="mb-3 col-6">
+            <label asp-for="NameDepartemnt" class="form-label"></label>
+            <input asp-for="NameDepartemnt" class="form-control">
+            <span asp-validation-for="NameDepartemnt" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6"> <button type="submit" class="btn btn-primary btn-lg btn-block">@Action</button></div>
+    </div>
+</form>
+
+
+@*
+  Add This For javaScript Validation     
+*@
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

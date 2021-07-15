@@ -45,9 +45,9 @@ namespace UserMangmentSystem.Controllers
 
         public IActionResult Add()
         {
+            Department dep = new Department();
 
-
-            return View("Add_Department");
+            return View("Add_Department",dep);
         }
 
 
